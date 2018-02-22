@@ -74,14 +74,12 @@ public class GameField implements Runnable {
         }
 
         while (true){
-            for (Ball ball:balls) {
                 viewPole();
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
         }
     }
 }

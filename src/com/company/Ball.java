@@ -10,19 +10,19 @@ public class Ball {
 
     final int TOP = 0, RIGTH = 1, BOTTOM = 2, LEFT = 3;
 
-    public synchronized   int getPositionX() {
+    public  int getPositionX() {
         return positionX;
     }
 
-    public synchronized  int getPositionY() {
+    public  int getPositionY() {
         return positionY;
     }
 
-    public synchronized  void setPositionX(int positionX) {
+    public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
 
-    public synchronized  void setPositionY(int positionY) {
+    public  void setPositionY(int positionY) {
         this.positionY = positionY;
     }
 
