@@ -6,12 +6,13 @@ public class Main {
 	GameField gameField = new GameField(10,10);
 
 
-	for (int i = 0; i <10 ; i++) {
+	for (int i = 0; i <3 ; i++) {
 		gameField.newPlayer(new Player());
 	}
 
+	gameField.startGame();
 
-	Thread game = new Thread(gameField);
-	game.start();
+	ViewGameField view1 = new ViewGameField(gameField);
+	new Thread(view1).start();
     }
 }

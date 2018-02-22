@@ -5,19 +5,21 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class GameField implements Runnable {
+public class GameField {
     int sizeX;
     int sizeY;
     Set<Ball> balls = new HashSet<>();
     Set<Player> players = new HashSet<>();
-    boolean[][] field ;
-
 
 
     GameField(int sizeX, int  sizeY){
         this.sizeX  =sizeX;
         this.sizeY = sizeY;
-        field = new boolean[sizeX][sizeY];
+
+    }
+
+    public Set<Ball> getBalls() {
+        return balls;
     }
 
     public int getSizeX() {
@@ -28,14 +30,18 @@ public class GameField implements Runnable {
         return sizeY;
     }
 
-    public synchronized boolean isFiedl(int x, int y){
-        return  (field[x][y] == false) ? true : false;
+    public synchronized boolean isEmpty(int x, int y){
+        if (balls.size() == 0) return true;
+
+        boolean result = true;
+        for (Ball ball:balls) {
+             if (ball.getPositionX() == x && ball.getPositionY()==y){
+                 result = false;
+             }
+        }
+        return  result;
     }
 
-    public synchronized void commitField(int oldX, int oldY, int newX, int newY){
-            field[oldX][oldY] = false;
-            field[newX][newY] = true;
-    }
 
     public void newPlayer(Player player){
         player.setField(this);
@@ -48,7 +54,7 @@ public class GameField implements Runnable {
         do {
             x =random.nextInt(sizeX);
             y = random.nextInt(sizeY);
-        }while (!(field[x][y] == false));
+        }while (!(isEmpty(x, y) == true));
         newBall.setPositionX(x);
         newBall.setPositionY(y);
 
@@ -56,30 +62,22 @@ public class GameField implements Runnable {
     }
 
     public synchronized void viewPole(){
-        for (int i = 0; i <sizeY ; i++) {
-            for (int j = 0; j <sizeY ; j++) {
-                System.out.print((field[i][j]) ? "0" : "-"  );
-            }
-            System.out.println();
-        }
-        System.out.println("----------------------------------------------");
+//        for (int i = 0; i <sizeY ; i++) {
+//            for (int j = 0; j <sizeY ; j++) {
+//                System.out.print((field[i][j]) ? "0" : "-"  );
+//            }
+//            System.out.println();
+//        }
+//        System.out.println("----------------------------------------------");
     }
 
 
-    @Override
-    public void run() {
+
+    public void startGame() {
         for (Player player : players) {
             Thread thread = new Thread(player);
             thread.start();
         }
 
-        while (true){
-                viewPole();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-        }
     }
 }
