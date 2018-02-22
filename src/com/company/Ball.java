@@ -8,19 +8,19 @@ public class Ball {
     private int positionX;
     private int positionY;
 
-    public synchronized int getPositionX() {
+    public  int getPositionX() {
         return positionX;
     }
 
-    public synchronized int getPositionY() {
+    public  int getPositionY() {
         return positionY;
     }
 
-    public synchronized void setPositionX(int positionX) {
+    public  void setPositionX(int positionX) {
         this.positionX = positionX;
     }
 
-    public synchronized void setPositionY(int positionY) {
+    public  void setPositionY(int positionY) {
         this.positionY = positionY;
     }
 

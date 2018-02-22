@@ -61,15 +61,6 @@ public class GameField {
         balls.add(newBall);
     }
 
-    public synchronized void viewPole(){
-//        for (int i = 0; i <sizeY ; i++) {
-//            for (int j = 0; j <sizeY ; j++) {
-//                System.out.print((field[i][j]) ? "0" : "-"  );
-//            }
-//            System.out.println();
-//        }
-//        System.out.println("----------------------------------------------");
-    }
 
 
 

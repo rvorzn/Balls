@@ -33,8 +33,12 @@ public class Player implements Runnable {
         Set<Integer> attempt = new HashSet<>();
         do {
             int newX=0, newY=0;
-            int positionX = ball.getPositionX();
-            int positionY = ball.getPositionY();
+            int positionX, positionY;
+            synchronized (field){
+                positionX = ball.getPositionX();
+                positionY = ball.getPositionY();
+            }
+
             int step = random.nextInt(4);
             switch (step){
                 case TOP:
