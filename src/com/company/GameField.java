@@ -62,8 +62,6 @@ public class GameField {
     }
 
 
-
-
     public void startGame() {
         for (Player player : players) {
             Thread thread = new Thread(player);

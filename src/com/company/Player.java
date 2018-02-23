@@ -62,6 +62,7 @@ public class Player implements Runnable {
                 if (newX >= 0 && newY >= 0 && newX < field.getSizeX() && newY < field.getSizeY() && field.isEmpty(newX, newY)) {
                     ball.setPositionX(newX);
                     ball.setPositionY(newY);
+                    ball.setMove(true);
                     exit = true;
                 }else{
                     attempt.add(step);

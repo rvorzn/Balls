@@ -7,6 +7,16 @@ import java.util.Set;
 public class Ball {
     private int positionX;
     private int positionY;
+    boolean isMove = false;
+
+    Ball(){
+
+    }
+
+    Ball(Ball oldBall){
+        this.positionX = oldBall.getPositionX();
+        this.positionY = oldBall.getPositionY();
+    }
 
     public  int getPositionX() {
         return positionX;
@@ -24,5 +34,7 @@ public class Ball {
         this.positionY = positionY;
     }
 
+    public boolean isMove() { return isMove; }
 
+    public void setMove(boolean move) { isMove = move; }
 }
